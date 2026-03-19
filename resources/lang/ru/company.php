@@ -37,4 +37,6 @@ return [
     'no_company_yet' => 'Вы ещё не создали компанию',
     'followed_companies' => 'Подписки на компании',
     'view_all_companies' => 'Все компании',
+    'request_verification' => 'Запросить верификацию',
+    'request_pending' => 'Заявка на рассмотрении',
 ];

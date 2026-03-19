@@ -38,8 +38,17 @@
                             </span>
                         @endif
                     </h1>
-                    
+
                     @auth
+                        @if(auth()->user()->isSeller() && auth()->user()->company && auth()->user()->company->id === $company->id && ! $company->is_verified)
+                            @php $hasPending = \App\Models\VerificationRequest::where('company_id', $company->id)->where('status', 'pending')->exists(); @endphp
+                            @if(! $hasPending)
+                                <a href="{{ route('verification_requests.create') }}" class="btn btn-outline-primary ml-3">{{ __('company.request_verification') }}</a>
+                            @else
+                                <span class="badge bg-warning text-dark ml-3">{{ __('company.request_pending') }}</span>
+                            @endif
+                        @endif
+
                         @if(auth()->id() !== $company->user_id)
                             <button class="btn {{ $isFollowing ? 'btn-secondary' : 'btn-primary' }} company-follow-btn" 
                                     data-company-slug="{{ $company->slug }}"

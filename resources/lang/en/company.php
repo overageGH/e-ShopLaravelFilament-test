@@ -37,4 +37,6 @@ return [
     'no_company_yet' => 'You haven\'t created a company yet',
     'followed_companies' => 'Followed Companies',
     'view_all_companies' => 'View all companies',
+    'request_verification' => 'Request verification',
+    'request_pending' => 'Request pending',
 ];

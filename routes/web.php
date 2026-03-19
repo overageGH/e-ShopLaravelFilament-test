@@ -315,3 +315,19 @@ Route::get('/language/{locale}', function (string $locale) {
 Route::middleware(['auth', \App\Http\Middleware\LogUserActivity::class])->group(function () {
     Route::get('/activity-log', [\App\Http\Controllers\ActivityLogController::class, 'index'])->name('activity_log.index');
 });
+
+// Verification Requests (company users)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/verification-requests', [\App\Http\Controllers\VerificationRequestController::class, 'index'])->name('verification_requests.index');
+    Route::get('/verification-requests/create', [\App\Http\Controllers\VerificationRequestController::class, 'create'])->name('verification_requests.create');
+    Route::post('/verification-requests', [\App\Http\Controllers\VerificationRequestController::class, 'store'])->name('verification_requests.store');
+    Route::get('/verification-requests/{verificationRequest}', [\App\Http\Controllers\VerificationRequestController::class, 'show'])->name('verification_requests.show');
+});
+
+// Admin verification requests
+Route::middleware(['auth', \App\Http\Middleware\EnsureUserIsAdmin::class])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/verification-requests', [\App\Http\Controllers\Admin\VerificationRequestController::class, 'index'])->name('verification_requests.index');
+    Route::get('/verification-requests/{verificationRequest}', [\App\Http\Controllers\Admin\VerificationRequestController::class, 'show'])->name('verification_requests.show');
+    Route::post('/verification-requests/{verificationRequest}/approve', [\App\Http\Controllers\Admin\VerificationRequestController::class, 'approve'])->name('verification_requests.approve');
+    Route::post('/verification-requests/{verificationRequest}/reject', [\App\Http\Controllers\Admin\VerificationRequestController::class, 'reject'])->name('verification_requests.reject');
+});

@@ -37,4 +37,6 @@ return [
     'no_company_yet' => 'Jūs vēl neesat izveidojis kompāniju',
     'followed_companies' => 'Sekotās kompānijas',
     'view_all_companies' => 'Visas kompānijas',
+    'request_verification' => 'Pieteikt verifikāciju',
+    'request_pending' => 'Pieteikums izskatīšanā',
 ];

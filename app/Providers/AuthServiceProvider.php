@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\RefundRequest;
 use App\Models\Ticket;
 use App\Models\UserAddress;
+use App\Models\VerificationRequest;
 use App\Policies\CompanyPolicy;
 use App\Policies\CustomerReviewPolicy;
 use App\Policies\OrderPolicy;
@@ -18,6 +19,7 @@ use App\Policies\ProductPolicy;
 use App\Policies\RefundRequestPolicy;
 use App\Policies\TicketPolicy;
 use App\Policies\UserAddressPolicy;
+use App\Policies\VerificationRequestPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -31,6 +33,7 @@ class AuthServiceProvider extends ServiceProvider
         RefundRequest::class => RefundRequestPolicy::class,
         Ticket::class => TicketPolicy::class,
         UserAddress::class => UserAddressPolicy::class,
+        VerificationRequest::class => VerificationRequestPolicy::class,
     ];
 
     public function boot(): void
